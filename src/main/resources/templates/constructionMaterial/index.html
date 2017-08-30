@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Construction Materials Listings</h1>
+
+
+<h2>The online broker for leftover or unused construction materials.</h2>
+<p>Buildings construction projects routinely purchase 4 to 6% more material.</p>
+
+<p>Don't toss it: Sell or share leftover building materials. </p>
+
+<h1>Post Construction Materials Here</h1>
+
+
+
+<table class="table">
+
+    <tr>
+        <th>Material Name</th>
+        <th>Quantity</th>
+        <th>Owner</th>
+        <th>Pick up Location</th>
+    </tr>
+
+    <tr th:each="constructionMaterial : ${constructionMaterials}">
+        <td th:text="${constructionMaterial.key}"></td>
+        <td th:text="${constructionMaterial.value}"></td>
+        <td th:text="${constructionMaterial.constructionMaterialCategory.name}"></td>
+    </tr>
+
+</table>
+
+
+</body>
+</html>
