@@ -40,7 +40,7 @@ public class ConstructionMaterialController {
 
     // below method displays the form only. Not using data.
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String displayAddConstructionMaterialsListingForm(Model model, @Valid ConstructionMaterial constructionMaterial) {
+    public String displayAddConstructionMaterialsListingForm(Model model) {
 
         model.addAttribute("title", "List Surplus Construction Materials");
         model.addAttribute(new ConstructionMaterial());
