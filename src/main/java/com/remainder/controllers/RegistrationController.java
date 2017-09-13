@@ -39,7 +39,7 @@ public class RegistrationController {
             return "registration/add";
         }
         registrationDao.save(newRegistration);
-        return "redirect:";
+        return "constructionMaterial/index";
     }
 }
 

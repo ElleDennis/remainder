@@ -40,24 +40,27 @@ public class ConstructionMaterialController {
 
     // below method displays the form only. Not using data.
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String displayAddConstructionMaterialsListingForm(Model model) {
+    public String displayAddConstructionMaterialListingForm(Model model) {
 
         model.addAttribute("title", "List Surplus Construction Materials");
         model.addAttribute(new ConstructionMaterial());
-        model.addAttribute("constructionMaterialCategories", constructionMaterialCategoryDao.findAll());
+        model.addAttribute("constructionMaterialCategories", ConstructionMaterialCategory.values());
         return "constructionMaterial/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddConstructionMaterialListingForm(@ModelAttribute @Valid ConstructionMaterial newConstructionMaterial, Errors errors, @RequestParam ConstructionMaterialCategory newConstructionMaterialCategory, Model model) {
+    public String processAddConstructionMaterialListingForm(@ModelAttribute @Valid ConstructionMaterial newConstructionMaterial, Errors errors, @RequestParam int constructionMaterialCategoryId, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "List available construction material");
             model.addAttribute("constructionMaterials", constructionMaterialCategoryDao.findAll());
             return "constructionMaterial/add";
         }
+        ConstructionMaterialCategory cat = constructionMaterialCategoryDao.findOne(constructionMaterialCategoryId);
+        newConstructionMaterial.setConstructionMaterialCategory(cat);
         constructionMaterialDao.save(newConstructionMaterial);
-        constructionMaterialCategoryDao.save(newConstructionMaterialCategory);
-        return "redirect:";
+
+        //constructionMaterialDao.save(newConstructionMaterial);
+        return "constructionMaterial/index";
     }
 }

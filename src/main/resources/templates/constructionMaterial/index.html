@@ -2,34 +2,51 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-<h1 th:text="${title}">Construction Materials Listings</h1>
+
+<div class="container">
+    <div class="row">
+        <h2>Remainder - online broker for leftover or unwanted construction materials.</h2>
+        <p>For professional construction companies only, this site offers the ability to list and/or shop for reusable and sustainable building materials.
+            The 21st century tool facillitates the purchase and sale of excess or salvaged building materials and equipment.
+            Construction companies can easily and quickly sell building material surpluses, overstock or anything else within the sixteen industry standard divisions.
+            This tool promotes the reusage of building materials and supplies and the reduction of waste worldwide.</p>
+    </div>
+</div>
 
 
-<h2>The online broker for leftover or unused construction materials.</h2>
-<p>Buildings construction projects routinely purchase 4 to 6% more material.</p>
+<div class="container">
+    <div class="row">
+        <h1>Construction Materials Listings</h1>
 
-<p>Don't toss it: Sell or share leftover building materials. </p>
+        <table class="table">
 
-<h1>Post Construction Materials Here</h1>
+            <tr>
+                <th>Material Name</th>
+                <th>Quantity</th>
+                <th>Owner</th>
+                <th>Pick up Location</th>
+            </tr>
+
+            <tr th:each="constructionMaterial : ${constructionMaterials}">
+                <td th:text="${constructionMaterial.key}"></td>
+                <td th:text="${constructionMaterial.value}"></td>
+                <td th:text="${constructionMaterial.constructionMaterialCategory.name}"></td>
+            </tr>
 
 
+        </table>
+    </div>
+</div>
 
-<table class="table">
 
-    <tr>
-        <th>Material Name</th>
-        <th>Quantity</th>
-        <th>Owner</th>
-        <th>Pick up Location</th>
-    </tr>
+<div class="container">
+    <div class="row">
+        <h2>The online broker for leftover or unused construction materials.</h2>
+        <p>Buildings construction projects routinely purchase 4 to 6% more material.</p>
 
-    <tr th:each="constructionMaterial : ${constructionMaterials}">
-        <td th:text="${constructionMaterial.key}"></td>
-        <td th:text="${constructionMaterial.value}"></td>
-        <td th:text="${constructionMaterial.constructionMaterialCategory.name}"></td>
-    </tr>
-
-</table>
+        <p>Don't toss it: Sell or share leftover building materials. </p>
+    </div>
+</div>
 
 
 </body>

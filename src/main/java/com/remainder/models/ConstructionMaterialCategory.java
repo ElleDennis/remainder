@@ -14,21 +14,21 @@ import javax.persistence.OneToMany;
 @Entity
 public enum ConstructionMaterialCategory {
 
-    GENERALREQUIREMENTS("General Requirements"),
-    SITECONSTRUCTION("Site Construction"),
-    CONCRETE("Concrete"),
-    MASONRY("Masonry"),
-    METALS("Metals"),
-    WOODPLASTIC("Wood and Plastic"),
-    THERMALPROTECTION("Thermal and Moisture Protection"),
-    DOORSWINDOWS("Doors and Windows"),
-    FINISHES("Finishes"),
-    SPECIALTIES("Specialities"),
-    EQUIPMENT("Equipement"),
-    SPECIALCONSTRUCTION("Special Construction"),
-    CONVEYINGSYSTEMS("Conveying Systems"),
-    MECHANICAL("Mechanical"),
-    ELECTRICAL("Electrical");
+    GENERALREQUIREMENTS ("General Requirements"),
+    SITECONSTRUCTION ("Site Construction"),
+    CONCRETE ("Concrete"),
+    MASONRY ("Masonry"),
+    METALS ("Metals"),
+    WOODPLASTIC ("Wood and Plastic"),
+    THERMALPROTECTION ("Thermal and Moisture Protection"),
+    DOORSWINDOWS ("Doors and Windows"),
+    FINISHES ("Finishes"),
+    SPECIALTIES ("Specialities"),
+    EQUIPMENT ("Equipment"),
+    SPECIALCONSTRUCTION ("Special Construction"),
+    CONVEYINGSYSTEMS ("Conveying Systems"),
+    MECHANICAL ("Mechanical"),
+    ELECTRICAL ("Electrical");
 
     @Id
     @GeneratedValue
@@ -38,11 +38,10 @@ public enum ConstructionMaterialCategory {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "constructionMaterialCategoryid")
+    @JoinColumn(name = "constructionMaterialCategory")
     private List<ConstructionMaterial> constructionMaterials = new ArrayList<>();
 
-    ConstructionMaterialCategory() {
-    }
+    ConstructionMaterialCategory() { }
 
     ConstructionMaterialCategory(String name) {
         this.name = name;
@@ -59,6 +58,7 @@ public enum ConstructionMaterialCategory {
     public void setName(String name) {
         this.name = name;
     }
+
     public List<ConstructionMaterial> getConstructionMaterials() {
         return constructionMaterials;
     }
