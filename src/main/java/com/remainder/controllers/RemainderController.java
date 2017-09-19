@@ -16,6 +16,6 @@ public class RemainderController {
     @RequestMapping(value = "")
     public String index() {
 
-        return "remainder/index";
+        return "index";
     }
 }
